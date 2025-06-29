@@ -7,9 +7,28 @@ import { SplitText } from "gsap/SplitText";
 
 function MenuBar({ clicked, handleMenu }) {
   const close = useRef(null);
+  const timeClose = useRef(null);
+  const isFirstRender = useRef(true);
+
   useGSAP(() => {
-    gsap.to(close.current, {});
-  });
+    timeClose.current = gsap.timeline({ paused: true }).to(close.current, {
+      duration: 0.8,
+      y: 20,
+      ease: "power2.in",
+      opacity: 0,
+      onStart: () => gsap.set(close.current, { pointerEvents: "none" }),
+      onComplete: () => gsap.set(close.current, { pointerEvents: "auto" }),
+      onReverseComplete: () =>
+        gsap.set(close.current, { pointerEvents: "auto" }),
+    });
+  }, []);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    clicked ? timeClose.current.play() : timeClose.current.reverse();
+  }, [clicked]);
   return (
     <button
       ref={close}
