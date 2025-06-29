@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 
 function MenuBar({ clicked, handleMenu }) {
+  const close = useRef(null);
+  useGSAP(() => {
+    gsap.to(close.current, {});
+  });
   return (
-    <>
+    <button
+      ref={close}
+      className="cursor-pointer flex justify-center items-center"
+      onClick={handleMenu}
+    >
       <p className="text-white text-2xl mr-2">{clicked ? "Close" : "Menu"}</p>
       <div className="flex flex-col space-y-1 pt-1">
         <span
@@ -21,7 +34,7 @@ function MenuBar({ clicked, handleMenu }) {
           }`}
         ></span>
       </div>
-    </>
+    </button>
   );
 }
 
