@@ -5,10 +5,9 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 
-function MenuBar({ clicked, handleMenu }) {
+function MenuBar({ clicked, handleMenu, hideOnOpen = true }) {
   const close = useRef(null);
   const timeClose = useRef(null);
-  const isFirstRender = useRef(true);
 
   useGSAP(() => {
     timeClose.current = gsap.timeline({ paused: true }).to(close.current, {
@@ -23,16 +22,16 @@ function MenuBar({ clicked, handleMenu }) {
     });
   }, []);
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
+    if (!hideOnOpen) {
+      timeClose.current.reverse();
       return;
     }
     clicked ? timeClose.current.play() : timeClose.current.reverse();
-  }, [clicked]);
+  }, [clicked, hideOnOpen]);
   return (
     <button
       ref={close}
-      className="cursor-pointer flex justify-center items-center"
+      className="cursor-pointer flex items-center justify-center "
       onClick={handleMenu}
     >
       <p className="text-white text-2xl mr-2">{clicked ? "Close" : "Menu"}</p>
