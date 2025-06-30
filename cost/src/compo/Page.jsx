@@ -65,7 +65,7 @@ export default function Page() {
     <>
       {
         <div
-          className={`w-full relative overflow-hidden ${
+          className={`w-full relative overflow-hidden font-inter ${
             clicked ? "h-[100vh]" : "h-[165vh]"
           } `}
         >
@@ -100,7 +100,7 @@ export default function Page() {
           </div>
           <div
             ref={navbarFall}
-            className="absolute inset-0 bg-stone-800 text-white pointer-events-none z-5"
+            className="absolute inset-0 bg-[#0a0a0a] text-white pointer-events-none z-5"
             style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" }} //initialement fermé
           >
             <NavbarContent clicked={clicked} handleMenu={handleMenu} />
