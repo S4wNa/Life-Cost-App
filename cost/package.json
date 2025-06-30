@@ -7,11 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "scrap": "node scrap.js"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@supabase/supabase-js": "^2.50.2",
     "@tailwindcss/vite": "^4.1.11",
+    "cheerio": "^1.1.0",
+    "dotenv": "^17.0.0",
     "gsap": "^3.13.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
