@@ -21,6 +21,7 @@ export default function Page() {
   const revealTitle1 = useRef(null);
 
   useGSAP(() => {
+    gsap.delayedCall(0.1, () => {
     let text = SplitText.create(revealTitle.current, {
       type: "lines",
       charClass: "line",
@@ -31,6 +32,7 @@ export default function Page() {
     });
     gsap.from(text.lines, { y: 100, autoAlpha: 0, stagger: 0.06 });
     gsap.from(logo.lines, { y: 100, autoAlpha: 0, stagger: 0.05 });
+      });
   }, []);
 
   // Menu bar appear when top of screen reach 20% from top  , i set opacity to 1 beacuse opacity to 0 in the div and y to 0 beause i had mooved it from 10 in the div
