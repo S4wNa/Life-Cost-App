@@ -10,3 +10,13 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Deployment
+
+Before deploying the application you **must** generate the production build:
+
+```bash
+npm run build
+```
+
+The compiled files will be available in the `dist/` folder. Upload that folder to your static hosting provider or serve it locally with `npm run preview`. Opening `index.html` from the `cost` directory directly will not work because browsers cannot execute the `.jsx` modules and will report a `Failed to load module script` MIME type error.

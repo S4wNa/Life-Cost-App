@@ -1,3 +1,4 @@
+/* eslint-env node */
 // // scrap.js
 // import "dotenv/config";
 // import { createClient } from "@supabase/supabase-js";

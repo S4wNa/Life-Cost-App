@@ -7,19 +7,11 @@ import MenuBar from "./MenuBar";
 
 function NavbarContent({ clicked, handleMenu }) {
   const [countries, setCountries] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
-      setLoading(true);
-      const { data, error } = await supabase.from("countries").select("name");
-
-      if (error) {
-        setError(error);
-      } else {
-        setCountries(data);
-      }
+      const { data } = await supabase.from("countries").select("name");
+      setCountries(data);
     }
     fetchData();
   }, []);
