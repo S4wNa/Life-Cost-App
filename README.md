@@ -1,0 +1,1 @@
+Life cost is a web app made with react and supabase, i used some gsap eff but i didnt finish because i had some issue so i cut some eff et let it like this and its not that good but I'm gonna finish it latern : https://lifecost.netlify.app/
